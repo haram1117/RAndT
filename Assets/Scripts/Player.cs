@@ -26,29 +26,29 @@ public class Player : MonoBehaviour
     void Player_Move()
     {
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
-        Vector3 moveVelocity = Vector3.zero;
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            moveVelocity = Vector3.left;
-            player_runner.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            moveVelocity = Vector3.right;
-            player_runner.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else
-        {
-            player_runner.GetComponentInChildren<Animator>().SetBool("running", false);
-        }
+        //Vector3 moveVelocity = Vector3.zero;
+        //if (Input.GetAxisRaw("Horizontal") < 0)
+        //{
+        //    moveVelocity = Vector3.left;
+        //    player_runner.GetComponent<SpriteRenderer>().flipX = true;
+        //}
+        //else if (Input.GetAxisRaw("Horizontal") > 0)
+        //{
+        //    moveVelocity = Vector3.right;
+        //    player_runner.GetComponent<SpriteRenderer>().flipX = false;
+        //}
+        //else
+        //{
+        //    player_runner.GetComponentInChildren<Animator>().SetBool("running", false);
+        //}
         //player_runner.transform.position += moveVelocity * moveSpeed * Time.deltaTime;
-        grid_transform.position -= moveVelocity * moveSpeed * Time.deltaTime;
+        grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime * 0.5f;
     }
     void Player_Jump()
     {
         if(player_runner.GetComponent<Rigidbody2D>().velocity.y == 0)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetMouseButtonDown(0))
             {
                 player_runner.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpForce);
             }
