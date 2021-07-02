@@ -7,11 +7,12 @@ public class Player : MonoBehaviour
     private GameObject player_runner;
     private Transform grid_transform;
     public float moveSpeed = 6.0f;
+    private bool play_start = false;
     private float jumpForce = 500.0f;
     // Start is called before the first frame update
     void Start()
     {
-        player_runner = GameObject.Find("Runner");
+        player_runner = GameObject.Find("turtle");
         grid_transform = GameObject.Find("Grid").GetComponent<Transform>();
     }
 
@@ -19,8 +20,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         player_runner.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_runner.GetComponent<Rigidbody2D>().velocity.y);
-        Player_Move();
-        Player_Jump();
+        if (play_start)
+        {
+            Player_Move();
+            Player_Jump();
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+                play_start = true;
+        }
         //Player_Respawn();
     }
     void Player_Move()
@@ -48,7 +57,7 @@ public class Player : MonoBehaviour
     {
         if(player_runner.GetComponent<Rigidbody2D>().velocity.y == 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 player_runner.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpForce);
             }
