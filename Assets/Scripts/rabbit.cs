@@ -7,7 +7,7 @@ public class rabbit : MonoBehaviour
     private GameObject player_rabbit;
     public bool play_start = false;
     private float jumpForce = 500.0f;
-
+    private bool isGroundWater = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +30,32 @@ public class rabbit : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "waterGround")
+        {
+            isGroundWater = false;
+        }  
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "waterGround")
+            isGroundWater = true;
+    }
+
     void Player_Move()
     {
         player_rabbit.GetComponentInChildren<Animator>().SetBool("running", true);
-        player_rabbit.transform.position += Vector3.right * 0.05f * Time.deltaTime;
+        if (isGroundWater)
+        {
+            player_rabbit.transform.position += Vector3.right * 0.05f * Time.deltaTime;
+            player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 1f);
+        }
+        else
+        {
+            player_rabbit.transform.position += Vector3.right * 0.75f * Time.deltaTime;
+            player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
+        }
     }
     void Player_Jump()
     {
