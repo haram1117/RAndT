@@ -6,8 +6,14 @@ public class rabbit : MonoBehaviour
 {
     private GameObject player_rabbit;
     public bool play_start = false;
+    private bool carrot_trigger = false;
     private float jumpForce = 500.0f;
+<<<<<<< Updated upstream
 
+=======
+    private float timeCount = 0;
+    public AudioClip dashAudioClip;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +35,49 @@ public class rabbit : MonoBehaviour
                 play_start = true;
         }
     }
+<<<<<<< Updated upstream
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "carrot")
+        {
+            carrot_trigger = true;
+            Destroy(collision.gameObject);
+        }
+
+    }
+>>>>>>> Stashed changes
 
     void Player_Move()
     {
         player_rabbit.GetComponentInChildren<Animator>().SetBool("running", true);
+<<<<<<< Updated upstream
         player_rabbit.transform.position += Vector3.right * 0.05f * Time.deltaTime;
+=======
+        if (carrot_trigger)
+        {
+            timeCount += Time.deltaTime;
+            if(timeCount <= 1)
+            {
+                player_rabbit.GetComponent<AudioSource>().clip = dashAudioClip;
+                player_rabbit.GetComponent<AudioSource>().Play();
+                player_rabbit.transform.position += Vector3.right * 3f * Time.deltaTime;
+                player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 4f);
+                player_rabbit.GetComponentInChildren<Animator>().SetBool("runfast", true);
+            }
+            else
+            {
+                player_rabbit.GetComponentInChildren<Animator>().SetBool("runfast", false);
+                carrot_trigger = false;
+                timeCount = 0;
+            }
+        }
+        else
+        {
+            player_rabbit.transform.position += Vector3.right * 0.2f * Time.deltaTime;
+            player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 2f);
+        }
+>>>>>>> Stashed changes
     }
     void Player_Jump()
     {

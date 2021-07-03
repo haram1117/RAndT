@@ -28,6 +28,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-8193857030053844943
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: running
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: runfast
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: player_velocity
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6357724855977490541}
+  m_Solo: 1
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-6303002710471363894
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -56,6 +87,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-6248591836237192213
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: running
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: runfast
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: player_velocity
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6357724855977490541}
+  m_Solo: 1
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.08680004
+  m_TransitionOffset: 0
+  m_ExitTime: 0.8333333
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &-6164287542999923046
 AnimatorState:
   serializedVersion: 6
@@ -69,6 +131,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 175124695702951931}
   - {fileID: -6303002710471363894}
+  - {fileID: -6248591836237192213}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -97,6 +160,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 3522260817225318847}
   - {fileID: -8575546953145845307}
+  - {fileID: -8193857030053844943}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -130,6 +194,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -4242697981496833742}
     m_Position: {x: 590, y: 110, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6357724855977490541}
+    m_Position: {x: 610, y: 340, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -161,6 +228,21 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+  - m_Name: animation_speed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: runfast
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+>>>>>>> Stashed changes
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -258,6 +340,64 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &5314213593296052373
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: running
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: player_velocity
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: runfast
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -6164287542999923046}
+  m_Solo: 1
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.14506662
+  m_TransitionOffset: 0
+  m_ExitTime: 0.83333325
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1102 &6357724855977490541
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: turtle_runfast
+  m_Speed: 4
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 5314213593296052373}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: e8ea812c0b6814c488acc33ba37c66ae, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &7304081670806278626
 AnimatorState:
   serializedVersion: 6
