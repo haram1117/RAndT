@@ -8,12 +8,16 @@ public class rabbit : MonoBehaviour
     public bool play_start = false;
     private bool carrot_trigger = false;
     private float jumpForce = 500.0f;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 =======
     private float timeCount = 0;
     public AudioClip dashAudioClip;
 >>>>>>> Stashed changes
+=======
+    private bool isGroundWater = false;
+>>>>>>> main
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +52,23 @@ public class rabbit : MonoBehaviour
     }
 >>>>>>> Stashed changes
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "waterGround")
+        {
+            isGroundWater = false;
+        }  
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "waterGround")
+            isGroundWater = true;
+    }
+
     void Player_Move()
     {
         player_rabbit.GetComponentInChildren<Animator>().SetBool("running", true);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         player_rabbit.transform.position += Vector3.right * 0.05f * Time.deltaTime;
 =======
@@ -78,6 +96,18 @@ public class rabbit : MonoBehaviour
             player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 2f);
         }
 >>>>>>> Stashed changes
+=======
+        if (isGroundWater)
+        {
+            player_rabbit.transform.position += Vector3.right * 0.05f * Time.deltaTime;
+            player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 1f);
+        }
+        else
+        {
+            player_rabbit.transform.position += Vector3.right * 0.75f * Time.deltaTime;
+            player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
+        }
+>>>>>>> main
     }
     void Player_Jump()
     {

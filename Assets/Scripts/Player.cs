@@ -5,26 +5,28 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private GameObject player_runner;
-    private Transform grid_transform;
-    public float moveSpeed = 6.0f;
     private bool play_start = false;
     private float jumpForce = 500.0f;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     private float speedbytime = 1f;
     private bool waterdrop_trigger = false;
     private float timeCount = 0;
 >>>>>>> Stashed changes
+=======
+    private float speedbytime = 1f;
+>>>>>>> main
     // Start is called before the first frame update
     void Start()
     {
         player_runner = GameObject.Find("turtle");
-        grid_transform = GameObject.Find("Grid").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //speedbytime += Time.deltaTime;
         player_runner.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_runner.GetComponent<Rigidbody2D>().velocity.y);
         if (play_start)
         {
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
     void Player_Move()
     {
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         //Vector3 moveVelocity = Vector3.zero;
         //if (Input.GetAxisRaw("Horizontal") < 0)
@@ -90,6 +93,12 @@ public class Player : MonoBehaviour
             player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 2f);
         }
 >>>>>>> Stashed changes
+=======
+        //player_runner.transform.position += Vector3.right * 0.7f * speedbytime;
+        player_runner.transform.position += Vector3.right * 0.75f * Time.deltaTime;
+        player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
+       
+>>>>>>> main
     }
     void Player_Jump()
     {
@@ -101,12 +110,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-    //void Player_Respawn()
-    //{
-    //    if (player_runner.GetComponent<Transform>().position.y < -6)
-    //    {
-    //        player_runner.transform.SetPositionAndRotation(new Vector3(player_runner.transform.position.x - 1, 0, player_runner.transform.position.z), player_runner.transform.rotation);
-    //        grid_transform.SetPositionAndRotation(new Vector3(grid_transform.position.x +2, grid_transform.position.y, grid_transform.position.z), grid_transform.rotation);
-    //    }
-    //}
 }
