@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private GameObject player_runner;
     private bool play_start = false;
     private float jumpForce = 500.0f;
-    bool isGroundWater = false;
+    private float speedbytime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //speedbytime += Time.deltaTime;
         player_runner.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_runner.GetComponent<Rigidbody2D>().velocity.y);
         if (play_start)
         {
@@ -30,31 +31,13 @@ public class Player : MonoBehaviour
         }
         //Player_Respawn();
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "waterGround")
-        {
-            isGroundWater = false;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "waterGround")
-            isGroundWater = true;
-    }
     void Player_Move()
     {
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
-        if (isGroundWater)
-        {
-            player_runner.transform.position += Vector3.right * 0.75f * Time.deltaTime;
-            player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
-        }
-        else
-        {
-            player_runner.transform.position += Vector3.right * 0.05f * Time.deltaTime;
-            player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 1f);
-        }
+        //player_runner.transform.position += Vector3.right * 0.7f * speedbytime;
+        player_runner.transform.position += Vector3.right * 0.75f * Time.deltaTime;
+        player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
+       
     }
     void Player_Jump()
     {

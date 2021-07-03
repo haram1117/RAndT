@@ -29,6 +29,6 @@ public class GroundScroll : MonoBehaviour
     }
     void GroundMove()
     {
-        grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime * 0.5f;
+        grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime*1.7f;
     }
 }
