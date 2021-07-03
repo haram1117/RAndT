@@ -3,9 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+  tags: []
+=======
   tags:
   - waterGround
   - carrot
+  - waterDrop
+>>>>>>> Stashed changes
+=======
+  tags:
+  - waterGround
+  - carrot
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
