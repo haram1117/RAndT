@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private bool play_start = false;
     private float jumpForce = 500.0f;
     private float speedbytime = 1f;
+    private bool waterdrop_trigger = false;
+    private float timeCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +33,38 @@ public class Player : MonoBehaviour
         }
         //Player_Respawn();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "waterDrop")
+        {
+            waterdrop_trigger = true;
+            Destroy(collision.gameObject);
+        }
+    }
     void Player_Move()
     {
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
+        if (waterdrop_trigger)
+        {
+            timeCount += Time.deltaTime;
+            if (timeCount <= 1)
+            {
+                player_runner.transform.position += Vector3.right * 3f * Time.deltaTime;
+                player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 4f);
+                player_runner.GetComponentInChildren<Animator>().SetBool("runfast", true);
+            }
+            else
+            {
+                player_runner.GetComponentInChildren<Animator>().SetBool("runfast", false);
+                waterdrop_trigger = false;
+                timeCount = 0;
+            }
+        }
+        else
+        {
+            player_runner.transform.position += Vector3.right * 0.2f * Time.deltaTime;
+            player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 2f);
+        }
         //player_runner.transform.position += Vector3.right * 0.7f * speedbytime;
         player_runner.transform.position += Vector3.right * 0.75f * Time.deltaTime;
         player_runner.GetComponentInChildren<Animator>().SetFloat("animation_speed", 3f);
