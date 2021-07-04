@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8132296530225302911}
   - component: {fileID: 8132296530225302910}
   - component: {fileID: 8132296530225302897}
+  - component: {fileID: 8346873051630687174}
   m_Layer: 0
   m_Name: carrot_0
   m_TagString: carrot
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8132296530225302896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.278322, y: 0.47791553, z: -2}
+  m_LocalPosition: {x: -8.297, y: 0.434, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,3 +103,56 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &8346873051630687174
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132296530225302896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.42750096, y: -0.365072}
+  - {x: -0.4251051, y: -0.27797803}
+  - {x: -0.3158331, y: -0.066705644}
+  - {x: -0.15135288, y: 0.17025426}
+  - {x: -0.06846142, y: 0.255825}
+  - {x: 0.054236412, y: 0.26816437}
+  - {x: 0.08076191, y: 0.24434778}
+  - {x: -0.00036239624, y: 0.34175506}
+  - {x: 0.058439255, y: 0.3848839}
+  - {x: 0.11733627, y: 0.37406585}
+  - {x: 0.16990376, y: 0.29980734}
+  - {x: 0.22121239, y: 0.36727354}
+  - {x: 0.27419567, y: 0.3974959}
+  - {x: 0.33434153, y: 0.36270604}
+  - {x: 0.35151196, y: 0.29585448}
+  - {x: 0.32416534, y: 0.26193956}
+  - {x: 0.36568356, y: 0.27051118}
+  - {x: 0.4148469, y: 0.23481062}
+  - {x: 0.42960405, y: 0.18906769}
+  - {x: 0.39346504, y: 0.13883063}
+  - {x: 0.33371305, y: 0.12870714}
+  - {x: 0.29114485, y: 0.14373842}
+  - {x: 0.31454563, y: 0.08524075}
+  - {x: 0.29333925, y: 0.038466603}
+  - {x: 0.26142836, y: 0.041882694}
+  - {x: 0.22788143, y: 0.0881221}
+  - {x: 0.21189308, y: 0.013310403}
+  - {x: 0.18628025, y: -0.06922877}
+  - {x: 0.08325195, y: -0.14898136}
+  - {x: -0.16547394, y: -0.31141895}
+  - {x: -0.31924152, y: -0.3750224}
+  - {x: -0.38299465, y: -0.39067772}
+  - {x: -0.42572665, y: -0.36924428}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

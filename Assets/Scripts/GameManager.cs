@@ -7,8 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public Text play_time;
     private bool play_start = false;
+    public bool play_end = false;
     private float total_play_time;
-    rabbit gamestart;
+    private string winner;
+    rabbit rabbit_;
+    Player turtle_;
+    private bool turtledead = false;
+    private bool rabbitdead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +28,39 @@ public class GameManager : MonoBehaviour
         {
             total_play_time += Time.deltaTime;
             play_time.text = Mathf.Round(total_play_time).ToString();
+            turtledead = turtle_.isDead;
+            rabbitdead = rabbit_.isDead;
+            if(rabbitdead)
+            {
+                play_start = false;
+                IsPlayerDead("rabbit");
+            }
+            if (turtledead)
+            {
+                play_start = false;
+                IsPlayerDead("turtle");
+            }
+        }
+        else if(!turtledead && !rabbitdead)
+        {
+            turtle_ = GameObject.Find("turtle").GetComponent<Player>();
+            rabbit_ = GameObject.Find("rabbit").GetComponent<rabbit>();
+            play_start = rabbit_.play_start;
+        }
+    }
+    void IsPlayerDead(string obj)
+    {
+        if (obj == "rabbit")
+        {
+            Debug.Log("Turtle WIN");
+            winner = "turtle";
+            play_end = true;
         }
         else
         {
-            gamestart = GameObject.Find("rabbit").GetComponent<rabbit>();
-            play_start = gamestart.play_start;
+            Debug.Log("Rabbit WIN");
+            winner = "rabbit";
+            play_end = true;
         }
     }
 }
