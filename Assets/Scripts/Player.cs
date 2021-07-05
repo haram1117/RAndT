@@ -58,6 +58,18 @@ public class Player : MonoBehaviour
                         
                 }
             }
+
+            else if (SceneManager.GetActiveScene().name == "winter" || SceneManager.GetActiveScene().name == "summer")
+            {
+                if (!Menupanel.activeSelf)
+                {
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        play_start = true;
+                    }
+                }
+
+            }
         }
         //Player_Respawn();
    
@@ -116,13 +128,13 @@ public class Player : MonoBehaviour
     }
     void Player_Death()
     {
-        if (player_runner.transform.position.y < -7)
+        /*if (player_runner.transform.position.y < -10)
         {
             Playpanel.SetActive(false);
             Scorepanel.SetActive(true);
             isDead = true;
             play_end = true;
             Destroy(player_runner);
-        }
+        }*/
     }
 }
