@@ -15,11 +15,11 @@ public class Player : MonoBehaviour
     public AudioClip JumpAudioClip;
     public bool isDead = false;
     private GameObject Startpanel;
-
+    public GameObject ScoreContainer;
     public GameObject Scorepanel;
     public GameObject Playpanel;
     public GameObject Menupanel;
-
+    BtnManager startmanager;
     public GameObject effect;
 
     GameManager GM;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         player_runner = GameObject.Find("turtle");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         Startpanel = GameObject.Find("StartPage");
+        startmanager = GameObject.Find("BtnManager").GetComponent<BtnManager>();
     }
 
     // Update is called once per frame
@@ -36,7 +37,6 @@ public class Player : MonoBehaviour
     {
         if (play_end)
         {
-            Debug.Log("End");
             player_runner.GetComponentInChildren<Animator>().SetBool("game_end", true);
         }
         else
@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
             player_runner.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_runner.GetComponent<Rigidbody2D>().velocity.y);
             if (play_start && !play_end && Playpanel.activeSelf)
             {
-                Debug.Log("´Þ·Á¿ë2");
                 Player_Move();
                 Player_Jump();
                 Player_Death();
@@ -54,7 +53,7 @@ public class Player : MonoBehaviour
             {
                 if (GameObject.Find("BtnManager").GetComponent<BtnManager>().StartBtnClick && !Menupanel.activeSelf)
                 {
-                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    if (startmanager.isStarted)
                     {
                         play_start = true;
                     }
@@ -66,7 +65,7 @@ public class Player : MonoBehaviour
             {
                 if (!Menupanel.activeSelf)
                 {
-                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    if (startmanager.isStarted)
                     {
                         play_start = true;
                     }
@@ -87,10 +86,20 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             effect.GetComponent<ParticleSystem>().Play();
         }
+        else if (collision.gameObject.tag == "FinishFlag")
+        {
+            Debug.Log("Finish");
+            GameObject.Find("rabbit").GetComponent<rabbit>().Player_Death();
+            GameObject.Find("rabbit").GetComponent<rabbit>().isDead = true;
+            GM.play_end = true;
+        }
+        else if (collision.gameObject.tag == "Flag")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     void Player_Move()
     {
-        Debug.Log("running");
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
         if (waterdrop_trigger)
         {
@@ -130,15 +139,24 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void Player_Death()
+    public void Player_Death()
     {
-        /*if (player_runner.transform.position.y < -10)
-        {
-            Playpanel.SetActive(false);
-            Scorepanel.SetActive(true);
-            isDead = true;
-            play_end = true;
-            Destroy(player_runner);
-        }*/
+        //if (player_runner.transform.position.y < -10)
+        //{
+        //    Playpanel.SetActive(false);
+        //    ScoreContainer.SetActive(true);
+        //    Scorepanel.SetActive(true);
+        //    isDead = true;
+        //    play_end = true;
+        //    Destroy(player_runner);
+        //}
+        //else if(isDead)
+        //{
+        //    Debug.Log("°ÅºÏÀÌ Á×À½");
+        //    //Playpanel.SetActive(false);
+        //    //Scorepanel.SetActive(true);
+        //    //isDead = true;
+        //    //play_end = true;
+        //}
     }
 }

@@ -47,5 +47,18 @@ MonoBehaviour:
   Playpanel: {fileID: 0}
   Menupanel: {fileID: 0}
   Infopanel: {fileID: 0}
+  Scorepanel: {fileID: 0}
   Opening: {fileID: 8300000, guid: bb89a791dc7ae5f44bfbd670e9390c01, type: 3}
   Scene1: {fileID: 8300000, guid: 4236340d10329f44c8c292de8c95b2c8, type: 3}
+  Scene2: {fileID: 8300000, guid: b8a475b4647a3004182c340118e4935f, type: 3}
+  Scene3: {fileID: 8300000, guid: ce8d46423648d664ca658acefbf192ce, type: 3}
+  tryagain_btn_onclick: {fileID: 0}
+  StartBtnClick: 0
+  CountPage: {fileID: 0}
+  countimg: {fileID: 0}
+  one: {fileID: 21300000, guid: fe27399a56b85e442bcbf7317e5a2bec, type: 3}
+  two: {fileID: 21300000, guid: e8a748b740ee5b047bedf9e48fa809f5, type: 3}
+  three: {fileID: 21300000, guid: 6112ebdd603b31d4aa1fe660051e57d7, type: 3}
+  go: {fileID: 21300000, guid: b135b2f47b3260346909b94ae12b1a31, type: 3}
+  isStarted: 0
+  Count_AudioClip: {fileID: 8300000, guid: ac532bb62b8606347aea9b4a8e2ca07f, type: 3}

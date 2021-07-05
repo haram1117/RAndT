@@ -50,17 +50,20 @@ public class GameManager : MonoBehaviour
     }
     void IsPlayerDead(string obj)
     {
-        if (obj == "rabbit")
+        if (!play_end)
         {
-            Debug.Log("Turtle WIN");
-            winner = "turtle";
-            play_end = true;
-        }
-        else
-        {
-            Debug.Log("Rabbit WIN");
-            winner = "rabbit";
-            play_end = true;
+            if (obj == "rabbit")
+            {
+                Debug.Log("Turtle WIN");
+                winner = "turtle";
+                play_end = true;
+            }
+            else
+            {
+                Debug.Log("Rabbit WIN");
+                winner = "rabbit";
+                play_end = true;
+            }
         }
     }
 }

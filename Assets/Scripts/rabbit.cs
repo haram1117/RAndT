@@ -16,11 +16,11 @@ public class rabbit : MonoBehaviour
     private GameObject Startpanel;
     public bool isDead = false;
     GameManager GM;
-
+    public GameObject ScoreContainer;
     public GameObject Scorepanel;
     public GameObject Playpanel;
     public GameObject Menupanel;
-
+    BtnManager startmanager;
     public GameObject effect;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class rabbit : MonoBehaviour
         player_rabbit = GameObject.Find("rabbit");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         Startpanel = GameObject.Find("StartPage");
+        startmanager = GameObject.Find("BtnManager").GetComponent<BtnManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +36,6 @@ public class rabbit : MonoBehaviour
     {
         if (play_end)
         {
-            Debug.Log("End");
             player_rabbit.GetComponentInChildren<Animator>().SetBool("game_end", true);
         }
         else
@@ -43,7 +43,6 @@ public class rabbit : MonoBehaviour
             player_rabbit.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_rabbit.GetComponent<Rigidbody2D>().velocity.y);
             if (play_start && !play_end && Playpanel.activeSelf)
             {
-                Debug.Log("´Þ·Á¿ë");
                 Player_Move();
                 Player_Jump();
                 Player_Death();
@@ -53,7 +52,7 @@ public class rabbit : MonoBehaviour
             {
                 if (GameObject.Find("BtnManager").GetComponent<BtnManager>().StartBtnClick && !Menupanel.activeSelf)
                 {
-                    if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
+                    if (startmanager.isStarted)
                     {
                         play_start = true;
                     }
@@ -65,7 +64,7 @@ public class rabbit : MonoBehaviour
             {
                 if (!Menupanel.activeSelf)
                 {
-                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    if (startmanager.isStarted)
                     {
                         play_start = true;
                     }
@@ -73,7 +72,6 @@ public class rabbit : MonoBehaviour
 
             }
         }
-        Debug.Log(Playpanel.activeSelf);
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,6 +83,17 @@ public class rabbit : MonoBehaviour
             player_rabbit.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
             effect.GetComponent<ParticleSystem>().Play();
+        }
+        else if(collision.gameObject.tag == "FinishFlag")
+        {
+            Debug.Log("Finish");
+            GameObject.Find("turtle").GetComponent<Player>().Player_Death();
+            GameObject.Find("turtle").GetComponent<Player>().isDead = true;
+            GM.play_end = true;
+        }
+        else if(collision.gameObject.tag == "Flag")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
     }
@@ -127,12 +136,13 @@ public class rabbit : MonoBehaviour
             }
         }
     }
-    void Player_Death()
+    public void Player_Death()
     {
         if (player_rabbit.transform.position.y < -10)
         {
 
             Playpanel.SetActive(false);
+            ScoreContainer.SetActive(true);
             Scorepanel.SetActive(true);
             isDead = true;
             play_end = true;

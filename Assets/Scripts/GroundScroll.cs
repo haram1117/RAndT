@@ -12,6 +12,7 @@ public class GroundScroll : MonoBehaviour
     private bool game_end = false;
     private float speed=1.5f;
     public GameObject Playpanel;
+    public GameObject ScorePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,8 @@ public class GroundScroll : MonoBehaviour
         if (scroll_start && !game_end && Playpanel.activeSelf)
         {
             GroundMove();
-            
         }
-        else if(!game_end)
+        else if(!game_end && !ScorePanel.activeSelf)
         {
             gamemanager = GameObject.Find("rabbit").GetComponent<rabbit>();
             scroll_start = gamemanager.play_start;
