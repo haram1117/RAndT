@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public GameObject Scorepanel;
     public GameObject Playpanel;
     public GameObject Menupanel;
+    public GameObject Clearpanel;
+    public AudioClip ClearAudio;
     BtnManager startmanager;
     public GameObject effect;
 
@@ -91,10 +93,12 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "FinishFlag")
         {
-            Debug.Log("Finish");
-            GameObject.Find("rabbit").GetComponent<rabbit>().Player_Death();
-            GameObject.Find("rabbit").GetComponent<rabbit>().isDead = true;
+            Playpanel.SetActive(false);
+            Clearpanel.SetActive(true);
             GM.play_end = true;
+            play_end = true;
+            GM.GetComponent<AudioSource>().clip = ClearAudio;
+            GM.GetComponent<AudioSource>().Play();
         }
         else if (collision.gameObject.tag == "Flag")
         {
