@@ -33,11 +33,15 @@ public class BtnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Startpanel.activeSelf)
+        if (Startpanel.activeSelf && SceneManager.GetActiveScene().name == "SampleScene")
         {
             GM = GameObject.Find("GameManager");
             GM.GetComponent<AudioSource>().clip = Opening;
             GM.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            StartBtnClick = true;
         }
     }
 
@@ -46,6 +50,7 @@ public class BtnManager : MonoBehaviour
     {
         if (!Menupanel.activeSelf && !Scorepanel.activeSelf)
         {
+            Debug.Log("들어왔어");
             escMenu();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && Menupanel.activeSelf)
@@ -74,6 +79,7 @@ public class BtnManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("여기냐");
             Menupanel.SetActive(false);
             Startpanel.SetActive(true);
         }
