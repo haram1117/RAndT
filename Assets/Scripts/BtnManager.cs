@@ -33,6 +33,7 @@ public class BtnManager : MonoBehaviour
     private bool fourth = false;
 
 
+
     GameObject GM;
     public void StartBtn()
     {
@@ -149,7 +150,7 @@ public class BtnManager : MonoBehaviour
 
     void escMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)&& !Menupanel.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape)&& !Menupanel.activeSelf && !CountPage.activeSelf)
         {
             Playpanel.SetActive(false);
             Menupanel.SetActive(true);

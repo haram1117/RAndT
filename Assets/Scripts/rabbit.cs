@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class rabbit : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class rabbit : MonoBehaviour
     public GameObject Menupanel;
     BtnManager startmanager;
     public GameObject effect;
+
+
+    public Text Score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +101,7 @@ public class rabbit : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+
     }
 
     void Player_Move()
@@ -123,6 +129,7 @@ public class rabbit : MonoBehaviour
             player_rabbit.transform.position += Vector3.right * 0.2f * Time.deltaTime;
             player_rabbit.GetComponentInChildren<Animator>().SetFloat("animation_speed", 2f);
         }
+
     }
     void Player_Jump()
     {
@@ -146,6 +153,7 @@ public class rabbit : MonoBehaviour
             Scorepanel.SetActive(true);
             isDead = true;
             play_end = true;
+            Score.text= GameObject.Find("GameManager").GetComponent<GameManager>().play_time.text;
             Destroy(player_rabbit);
         }
     }
