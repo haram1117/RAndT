@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
     public GameObject Menupanel;
     BtnManager startmanager;
     public GameObject effect;
+
+    public Text Score;
 
     GameManager GM;
     // Start is called before the first frame update
@@ -148,6 +151,7 @@ public class Player : MonoBehaviour
         //    Scorepanel.SetActive(true);
         //    isDead = true;
         //    play_end = true;
+        //    Score.text = GameObject.Find("GameManager").GetComponent<GameManager>().play_time.text;
         //    Destroy(player_runner);
         //}
         //else if(isDead)
