@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public GameObject Scorepanel;
     public GameObject Playpanel;
     public GameObject Menupanel;
+
+    public GameObject effect;
+
     GameManager GM;
     // Start is called before the first frame update
     void Start()
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
             player_runner.GetComponent<AudioSource>().clip = dashAudioClip;
             player_runner.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
+            effect.GetComponent<ParticleSystem>().Play();
         }
     }
     void Player_Move()
