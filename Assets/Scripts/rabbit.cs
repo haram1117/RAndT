@@ -58,6 +58,18 @@ public class rabbit : MonoBehaviour
                         
                 }
             }
+
+            else if (SceneManager.GetActiveScene().name == "winter" || SceneManager.GetActiveScene().name == "summer")
+            {
+                if (!Menupanel.activeSelf)
+                {
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        play_start = true;
+                    }
+                }
+
+            }
         }
         Debug.Log(Playpanel.activeSelf);
 
@@ -114,7 +126,7 @@ public class rabbit : MonoBehaviour
     }
     void Player_Death()
     {
-        if (player_rabbit.transform.position.y < -7)
+        if (player_rabbit.transform.position.y < -10)
         {
 
             Playpanel.SetActive(false);

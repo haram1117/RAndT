@@ -10,6 +10,7 @@ public class GroundScroll : MonoBehaviour
     rabbit gamemanager;
     GameManager gm;
     private bool game_end = false;
+    private float speed=1.5f;
     public GameObject Playpanel;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class GroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed += 0.0003f;
         if (scroll_start && !game_end && Playpanel.activeSelf)
         {
             GroundMove();
@@ -35,6 +37,6 @@ public class GroundScroll : MonoBehaviour
     }
     void GroundMove()
     {
-        grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime*1.7f;
+        grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime* speed;
     }
 }
