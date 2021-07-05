@@ -143,6 +143,8 @@ MonoBehaviour:
   dashAudioClip: {fileID: 8300000, guid: 17b5de6f52e35a54d9515bc407ffa25b, type: 3}
   JumpAudioClip: {fileID: 8300000, guid: 4184b5994ce34d941ba47f4b2f120080, type: 3}
   isDead: 0
+  Scorepanel: {fileID: 2488794699647639262, guid: 2e36edddc51402749839903b58decf29, type: 3}
+  Playpanel: {fileID: 4174726344958082699, guid: 2d943eaf1c0271b40a92b78cd0114d3b, type: 3}
 --- !u!82 &-470550113630928665
 AudioSource:
   m_ObjectHideFlags: 0
