@@ -20,6 +20,8 @@ public class rabbit : MonoBehaviour
     public GameObject Scorepanel;
     public GameObject Playpanel;
     public GameObject Menupanel;
+
+    public GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,7 @@ public class rabbit : MonoBehaviour
             player_rabbit.GetComponent<AudioSource>().clip = dashAudioClip;
             player_rabbit.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
+            effect.GetComponent<ParticleSystem>().Play();
         }
 
     }
