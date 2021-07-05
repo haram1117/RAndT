@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public AudioClip JumpAudioClip;
     public bool isDead = false;
     private GameObject Startpanel;
+
+    public GameObject Scorepanel;
+    public GameObject Playpanel;
+    public GameObject Menupanel;
     GameManager GM;
     // Start is called before the first frame update
     void Start()
@@ -35,20 +39,28 @@ public class Player : MonoBehaviour
         else
         {
             player_runner.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_runner.GetComponent<Rigidbody2D>().velocity.y);
-            if (play_start && !play_end)
+            if (play_start && !play_end && Playpanel.activeSelf)
             {
+                Debug.Log("´Þ·Á¿ë2");
                 Player_Move();
                 Player_Jump();
                 Player_Death();
                 play_end = GM.play_end;
             }
-            else if(!Startpanel.activeSelf || SceneManager.GetActiveScene().name != "SampleScene")
+            else if(SceneManager.GetActiveScene().name == "SampleScene")
             {
-                if (Input.GetMouseButtonDown(0))
-                    play_start = true;
+                if (GameObject.Find("BtnManager").GetComponent<BtnManager>().StartBtnClick && !Menupanel.activeSelf)
+                {
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        play_start = true;
+                    }
+                        
+                }
             }
         }
         //Player_Respawn();
+   
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -62,6 +74,7 @@ public class Player : MonoBehaviour
     }
     void Player_Move()
     {
+        Debug.Log("running");
         player_runner.GetComponentInChildren<Animator>().SetBool("running", true);
         if (waterdrop_trigger)
         {
@@ -105,7 +118,10 @@ public class Player : MonoBehaviour
     {
         if (player_runner.transform.position.y < -7)
         {
+            Playpanel.SetActive(false);
+            Scorepanel.SetActive(true);
             isDead = true;
+            play_end = true;
             Destroy(player_runner);
         }
     }

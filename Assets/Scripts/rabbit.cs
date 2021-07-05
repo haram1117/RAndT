@@ -16,6 +16,10 @@ public class rabbit : MonoBehaviour
     private GameObject Startpanel;
     public bool isDead = false;
     GameManager GM;
+
+    public GameObject Scorepanel;
+    public GameObject Playpanel;
+    public GameObject Menupanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,19 +39,28 @@ public class rabbit : MonoBehaviour
         else
         {
             player_rabbit.GetComponentInChildren<Animator>().SetInteger("player_velocity", (int)player_rabbit.GetComponent<Rigidbody2D>().velocity.y);
-            if (play_start && !play_end)
+            if (play_start && !play_end && Playpanel.activeSelf)
             {
+                Debug.Log("´Þ·Á¿ë");
                 Player_Move();
                 Player_Jump();
                 Player_Death();
                 play_end = GM.play_end;
             }
-            else if(!Startpanel.activeSelf || SceneManager.GetActiveScene().name != "SampleScene")
+            else if (SceneManager.GetActiveScene().name == "SampleScene")
             {
-                if (Input.GetMouseButtonDown(0))
-                    play_start = true;
+                if (GameObject.Find("BtnManager").GetComponent<BtnManager>().StartBtnClick && !Menupanel.activeSelf)
+                {
+                    if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        play_start = true;
+                    }
+                        
+                }
             }
         }
+        Debug.Log(Playpanel.activeSelf);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -103,8 +116,11 @@ public class rabbit : MonoBehaviour
     {
         if (player_rabbit.transform.position.y < -7)
         {
+
+            Playpanel.SetActive(false);
+            Scorepanel.SetActive(true);
             isDead = true;
-            Debug.Log(player_rabbit.transform.position.y);
+            play_end = true;
             Destroy(player_rabbit);
         }
     }

@@ -10,6 +10,7 @@ public class GroundScroll : MonoBehaviour
     rabbit gamemanager;
     GameManager gm;
     private bool game_end = false;
+    public GameObject Playpanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +21,17 @@ public class GroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (scroll_start && !game_end)
+        if (scroll_start && !game_end && Playpanel.activeSelf)
         {
             GroundMove();
-            game_end = gm.play_end;
+            
         }
         else if(!game_end)
         {
             gamemanager = GameObject.Find("rabbit").GetComponent<rabbit>();
             scroll_start = gamemanager.play_start;
         }
+        game_end = gm.play_end;
     }
     void GroundMove()
     {
