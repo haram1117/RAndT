@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1601129258454602277}
   - component: {fileID: 59379571331517086}
   - component: {fileID: 2215177607204872104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: turtle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,10 +143,14 @@ MonoBehaviour:
   dashAudioClip: {fileID: 8300000, guid: 17b5de6f52e35a54d9515bc407ffa25b, type: 3}
   JumpAudioClip: {fileID: 8300000, guid: 4184b5994ce34d941ba47f4b2f120080, type: 3}
   isDead: 0
+  ScoreContainer: {fileID: 0}
   Scorepanel: {fileID: 0}
   Playpanel: {fileID: 0}
   Menupanel: {fileID: 0}
+  Clearpanel: {fileID: 0}
+  ClearAudio: {fileID: 0}
   effect: {fileID: 1766095923772150901}
+  Score: {fileID: 0}
 --- !u!82 &59379571331517086
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,9 +260,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06784149, y: 0.0033605895}
+  m_Offset: {x: 0.06784149, y: -0.01801614}
   serializedVersion: 2
-  m_Radius: 0.38661098
+  m_Radius: 0.4079877
 --- !u!1001 &1766095923772280387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,9 +270,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1601129258454602280}
     m_Modifications:
+    - target: {fileID: 102976, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 130830, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 137782, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
       propertyPath: m_Name
       value: VenomSpell
+      objectReference: {fileID: 0}
+    - target: {fileID: 137782, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 176002, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 499650, guid: cdea235694a86bd4eb61ae7cffd8de49, type: 3}
       propertyPath: m_RootOrder

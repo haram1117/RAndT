@@ -3250,6 +3250,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: turtle
       objectReference: {fileID: 0}
+    - target: {fileID: 2215177607204872104, guid: b557689cf995221428cb0f8b97a54e57, type: 3}
+      propertyPath: m_Radius
+      value: 0.40798497
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215177607204872104, guid: b557689cf995221428cb0f8b97a54e57, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0180134
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b557689cf995221428cb0f8b97a54e57, type: 3}
 --- !u!1001 &1663927774
