@@ -148,23 +148,15 @@ public class Player : MonoBehaviour
     }
     public void Player_Death()
     {
-        //if (player_runner.transform.position.y < -10)
-        //{
-        //    Playpanel.SetActive(false);
-        //    ScoreContainer.SetActive(true);
-        //    Scorepanel.SetActive(true);
-        //    isDead = true;
-        //    play_end = true;
-        //    Score.text = GameObject.Find("GameManager").GetComponent<GameManager>().play_time.text;
-        //    Destroy(player_runner);
-        //}
-        //else if(isDead)
-        //{
-        //    Debug.Log("°ÅºÏÀÌ Á×À½");
-        //    //Playpanel.SetActive(false);
-        //    //Scorepanel.SetActive(true);
-        //    //isDead = true;
-        //    //play_end = true;
-        //}
+        if (player_runner.transform.position.y < -10)
+        {
+            Playpanel.SetActive(false);
+            ScoreContainer.SetActive(true);
+            Scorepanel.SetActive(true);
+            isDead = true;
+            play_end = true;
+            Score.text = GameObject.Find("GameManager").GetComponent<GameManager>().play_time.text;
+           Destroy(player_runner);
+        }
     }
 }
