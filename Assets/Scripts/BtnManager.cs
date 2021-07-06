@@ -11,6 +11,10 @@ public class BtnManager : MonoBehaviour
     public GameObject Menupanel;
     public GameObject Infopanel;
     public GameObject Scorepanel;
+    public GameObject fadeoutpanel;
+    public GameObject fadeoutcanvas;
+
+    private GameObject MS;
     public AudioClip Opening;
     public AudioClip Scene1;
     public AudioClip Scene2;
@@ -32,9 +36,10 @@ public class BtnManager : MonoBehaviour
     private bool third = false;
     private bool fourth = false;
 
-
-
+    private bool checkbool = false;
+    private Color color;
     GameObject GM;
+
     public void StartBtn()
     {
         Startpanel.SetActive(false);
@@ -45,18 +50,18 @@ public class BtnManager : MonoBehaviour
         Playpanel.SetActive(true);
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
-            GM.GetComponent<AudioSource>().clip = Scene1;
-            GM.GetComponent<AudioSource>().Play();
+            MS.GetComponent<AudioSource>().clip = Scene1;
+            MS.GetComponent<AudioSource>().Play();
         }
         else if(SceneManager.GetActiveScene().name == "summer")
         {
-            GM.GetComponent<AudioSource>().clip = Scene2;
-            GM.GetComponent<AudioSource>().Play();
+            MS.GetComponent<AudioSource>().clip = Scene2;
+            MS.GetComponent<AudioSource>().Play();
         }
         else if (SceneManager.GetActiveScene().name == "winter")
         {
-            GM.GetComponent<AudioSource>().clip = Scene3;
-            GM.GetComponent<AudioSource>().Play();
+            MS.GetComponent<AudioSource>().clip = Scene3;
+            MS.GetComponent<AudioSource>().Play();
         }
         StartBtnClick = true;
     }
@@ -69,9 +74,9 @@ public class BtnManager : MonoBehaviour
     {
         if (Startpanel.activeSelf && SceneManager.GetActiveScene().name == "SampleScene")
         {
-            GM = GameObject.Find("GameManager");
-            GM.GetComponent<AudioSource>().clip = Opening;
-            GM.GetComponent<AudioSource>().Play();
+            MS = GameObject.Find("MainScene");
+            MS.GetComponent<AudioSource>().clip = Opening;
+            MS.GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -79,8 +84,9 @@ public class BtnManager : MonoBehaviour
         }
         if(SceneManager.GetActiveScene().name == "winter" || SceneManager.GetActiveScene().name == "summer")
         {
+            MS = GameObject.Find("MainScene");
             GM = GameObject.Find("GameManager");
-            CountPage.SetActive(true);
+            fadeoutpanel.SetActive(true);
         }
     }
 
@@ -146,6 +152,31 @@ public class BtnManager : MonoBehaviour
                 CountPage.SetActive(false);
             }
         }
+        if (fadeoutpanel.activeSelf && checkbool)
+        {
+            color = fadeoutcanvas.GetComponent<Image>().color;
+            color.a += Time.deltaTime * 0.5f;
+            fadeoutcanvas.GetComponent<Image>().color = color;
+            Debug.Log(color.a);
+            if (color.a >= 1)
+            {
+                Debug.Log(checkbool);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
+        if (fadeoutpanel.activeSelf && !checkbool)
+        {
+            color = fadeoutcanvas.GetComponent<Image>().color;
+            color.a -= Time.deltaTime * 0.5f;
+            fadeoutcanvas.GetComponent<Image>().color = color;
+            Debug.Log(color.a);
+            if (color.a <= 0)
+            {
+                CountPage.SetActive(true);
+                fadeoutpanel.SetActive(false);
+            }
+        }
+
     }
 
     void escMenu()
@@ -195,6 +226,12 @@ public class BtnManager : MonoBehaviour
     public void reloadscene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void levelup()
+    {
+        fadeoutpanel.SetActive(true);
+        checkbool = true;
     }
 
 }

@@ -14,6 +14,7 @@ public class rabbit : MonoBehaviour
     private float timeCount = 0;
     public AudioClip dashAudioClip;
     public AudioClip JumpAudioClip;
+    public AudioClip levelupAudio;
     private GameObject Startpanel;
     public bool isDead = false;
     GameManager GM;
@@ -28,7 +29,7 @@ public class rabbit : MonoBehaviour
 
 
     public Text Score;
-
+    public GameObject levelupPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,7 +103,10 @@ public class rabbit : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Flag")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            levelupPanel.SetActive(true);
+            Playpanel.SetActive(false);
+            GM.GetComponent<AudioSource>().clip = levelupAudio;
+            GM.GetComponent<AudioSource>().Play();
         }
 
 
