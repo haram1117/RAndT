@@ -22,11 +22,12 @@ public class Player : MonoBehaviour
     public GameObject Menupanel;
     public GameObject Clearpanel;
     public AudioClip ClearAudio;
+    public AudioClip levelupAudio;
     BtnManager startmanager;
     public GameObject effect;
 
     public Text Score;
-
+    public GameObject levelupPanel;
     GameManager GM;
     // Start is called before the first frame update
     void Start()
@@ -102,7 +103,10 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Flag")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            levelupPanel.SetActive(true);
+            Playpanel.SetActive(false);
+            GM.GetComponent<AudioSource>().clip = levelupAudio;
+            GM.GetComponent<AudioSource>().Play();
         }
     }
     void Player_Move()
