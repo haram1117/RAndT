@@ -75,8 +75,9 @@ public class BtnManager : MonoBehaviour
         if (Startpanel.activeSelf && SceneManager.GetActiveScene().name == "SampleScene")
         {
             MS = GameObject.Find("MainScene");
-            MS.GetComponent<AudioSource>().clip = Opening;
-            MS.GetComponent<AudioSource>().Play();
+            GM = GameObject.Find("GameManager");
+            GM.GetComponent<AudioSource>().clip = Opening;
+            GM.GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -109,7 +110,6 @@ public class BtnManager : MonoBehaviour
             {
                 if (!first)
                 {
-                    Debug.Log("1");
                     GM.GetComponent<AudioSource>().clip = Count_AudioClip;
                     GM.GetComponent<AudioSource>().Play();
                     first = true;

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public AudioClip levelupAudio;
     BtnManager startmanager;
     public GameObject effect;
+    private GameObject MS;
 
     public Text Score;
     public GameObject levelupPanel;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     {
         player_runner = GameObject.Find("turtle");
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        MS = GameObject.Find("MainScene");
         Startpanel = GameObject.Find("StartPage");
         startmanager = GameObject.Find("BtnManager").GetComponent<BtnManager>();
     }
@@ -98,15 +100,15 @@ public class Player : MonoBehaviour
             Clearpanel.SetActive(true);
             GM.play_end = true;
             play_end = true;
-            GM.GetComponent<AudioSource>().clip = ClearAudio;
-            GM.GetComponent<AudioSource>().Play();
+            MS.GetComponent<AudioSource>().clip = ClearAudio;
+            MS.GetComponent<AudioSource>().Play();
         }
         else if (collision.gameObject.tag == "Flag")
         {
             levelupPanel.SetActive(true);
             Playpanel.SetActive(false);
-            GM.GetComponent<AudioSource>().clip = levelupAudio;
-            GM.GetComponent<AudioSource>().Play();
+            MS.GetComponent<AudioSource>().clip = levelupAudio;
+            MS.GetComponent<AudioSource>().Play();
         }
     }
     void Player_Move()
