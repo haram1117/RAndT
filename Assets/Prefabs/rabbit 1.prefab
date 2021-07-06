@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7969907502377723609}
   - component: {fileID: 193383747078190285}
   - component: {fileID: 4052667815773557241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rabbit 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,10 +144,14 @@ MonoBehaviour:
   dashAudioClip: {fileID: 8300000, guid: 17b5de6f52e35a54d9515bc407ffa25b, type: 3}
   JumpAudioClip: {fileID: 8300000, guid: 4184b5994ce34d941ba47f4b2f120080, type: 3}
   isDead: 0
+  ScoreContainer: {fileID: 0}
   Scorepanel: {fileID: 0}
   Playpanel: {fileID: 0}
   Menupanel: {fileID: 0}
+  Clearpanel: {fileID: 0}
+  ClearAudio: {fileID: 0}
   effect: {fileID: 8923685111812856973}
+  Score: {fileID: 0}
 --- !u!82 &193383747078190285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -257,8 +261,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.72, y: 1}
+  m_Offset: {x: 0, y: -0.015627384}
+  m_Size: {x: 0.72, y: 1.0312556}
   m_Direction: 0
 --- !u!1001 &8923685111812950405
 PrefabInstance:
@@ -270,6 +274,30 @@ PrefabInstance:
     - target: {fileID: 103688, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
       propertyPath: m_Name
       value: BladeStorm
+      objectReference: {fileID: 0}
+    - target: {fileID: 103688, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 104112, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 137638, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 141866, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 145878, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 184138, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 410194, guid: 61d06c6d35a503b47a23c676bb289e02, type: 3}
       propertyPath: m_RootOrder
