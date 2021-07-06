@@ -192,4 +192,9 @@ public class BtnManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void reloadscene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
