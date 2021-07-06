@@ -31,10 +31,11 @@ public class GroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed += 0.0003f;
         if (scroll_start && !game_end && Playpanel.activeSelf)
         {
+            speed += 0.0002f;
             GroundMove();
+            CameraMove();
         }
         else if (!game_end && !ScorePanel.activeSelf)
         {
@@ -46,8 +47,13 @@ public class GroundScroll : MonoBehaviour
     void GroundMove()
     {
         grid_transform.position -= Vector3.right * moveSpeed * Time.deltaTime * speed;
-        camera_transform.position = new Vector3((rabbit_t.position.x + turtle_t.position.x) / 2, camera_transform.position.y, camera_transform.position.z);
-        bg_transform.position = new Vector3((rabbit_t.position.x + turtle_t.position.x) / 2, camera_transform.position.y, bg_transform.position.z);
-
+    }
+    void CameraMove()
+    {
+        if (rabbit_t.transform.position.x > 0)
+        {
+            camera_transform.position = Vector3.Lerp(camera_transform.position,new Vector3((rabbit_t.position.x + turtle_t.position.x) / 2, camera_transform.position.y, camera_transform.position.z), Time.deltaTime);
+            bg_transform.position = Vector3.Lerp(bg_transform.position, new Vector3((rabbit_t.position.x + turtle_t.position.x) / 2, camera_transform.position.y, bg_transform.position.z), Time.deltaTime);
+        }
     }
 }
