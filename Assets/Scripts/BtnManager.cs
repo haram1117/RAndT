@@ -39,6 +39,7 @@ public class BtnManager : MonoBehaviour
     private bool checkbool = false;
     private Color color;
     GameObject GM;
+    private string path;
 
     public void StartBtn()
     {
@@ -233,5 +234,9 @@ public class BtnManager : MonoBehaviour
         fadeoutpanel.SetActive(true);
         checkbool = true;
     }
-
+    public void License()
+    {
+        path = Application.dataPath;
+        Application.OpenURL("file:///" + path + "/Resources/" + "0001.jpg");
+    }
 }

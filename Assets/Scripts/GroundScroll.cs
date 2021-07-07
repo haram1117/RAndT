@@ -33,7 +33,7 @@ public class GroundScroll : MonoBehaviour
     {
         if (scroll_start && !game_end && Playpanel.activeSelf)
         {
-            speed += 0.0002f;
+            speed += 0.0007f;
             GroundMove();
             CameraMove();
         }
