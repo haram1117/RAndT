@@ -1,14 +1,14 @@
 # Rabbit And Turtle 🐇🐢
 ## 목차
-1. [게임소개](#-1.-게임-소개Introduction)
+1. [게임소개](#1-게임-소개Introduction)
 
-2. [게임특징](#-2.-게임-특징Features)
+2. [게임특징](#2-게임-특징Features)
 
-3. [캐릭터](#-3.-캐릭터Characters)
+3. [캐릭터](#3-캐릭터Characters)
 
-4. [레벨](#-4.-레벨Stages)
+4. [레벨](#4-레벨Stages)
 
-5. [DownLoad & Playing Video](#-5.-Download)
+5. [DownLoad & Playing Video](#5-Download)
 ## 1. 게임 소개(Introduction)
 Rabbit and Turtle 게임은 2인용 2D 원터치 러닝게임입니다. 토끼와 거북이 이솝우화에서 아이디어를 착안하여, 토끼와 거북이가 목표지점까지 떨어지지 않고 대결하는 게임입니다. 신나는 bgm과 함께 달리기 실력을 뽐내보세요! 토끼와 거북이가 되어 친구와 함께 레벨업을 하고, 친구보다 더 오래 살아남으세요!
 
